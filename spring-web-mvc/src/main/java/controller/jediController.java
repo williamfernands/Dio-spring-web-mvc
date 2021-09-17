@@ -9,15 +9,25 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class jediController {
-    @GetMapping("/jedi")
-    public ModelAndView jedi(){
+public class JediController {
 
+    @GetMapping("jedi")
+    public ModelAndView jedi (){
         final ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("jedi");
 
         final Jedi luke = new Jedi("Luke", "Skywalker");
         modelAndView.addObject("allJedi", List.of(luke));
+        return modelAndView;
+    }
+
+    @GetMapping("/new-jedi")
+    public ModelAndView newJedi(){
+
+        final ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("new-jedi");
+
+        modelAndView.addObject("allJedi", new Jedi());
 
         return modelAndView;
     }
